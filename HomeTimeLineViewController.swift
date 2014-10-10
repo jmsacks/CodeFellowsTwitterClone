@@ -12,26 +12,39 @@ import Social
 
 class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    override func viewDidAppear(animated: Bool) {
-        tableView.reloadData()
-        }
     
+    @IBOutlet weak var headerFollowersLabel: UILabel!
+    @IBOutlet weak var headerHandleLabel: UILabel!
+    @IBOutlet weak var headerNameLabel: UILabel!
+    @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var tweets : [Tweet]?
     var twitterAccount : ACAccount?
     var networkController : NetworkController!
     var nib = UINib(nibName: "customTweetView", bundle: nil)
     var selectedTweet : Tweet?
+    var firstTweet : Tweet?
+    var refreshControl = UIRefreshControl ()
 
+    
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (selectedTweet == nil){
+            self.tableView.tableHeaderView = nil
+        }
         tableView.registerNib(nib, forCellReuseIdentifier: "tweetCell")
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         self.networkController = appDelegate.networkController
         
-        self.networkController.fetchHomeLine (selectedTweet, {(errorDescription : String?, tweets : [Tweet]?) -> (Void) in
+        
+        self.networkController.fetchTimeLine (firstTweet, selectedTweet: selectedTweet, {(errorDescription : String?, tweets : [Tweet]?) -> (Void) in
             if errorDescription != nil {
                 //alert the user that something went wrong
             } else {
@@ -47,6 +60,12 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UITab
 //            self.tweets = Tweet.parseJSONDataIntoTweets(jsonData)
 //        }
         
+        // Initialize the refresh control.
+        //self.refreshControl = UIRefreshControl ()
+        self.refreshControl.backgroundColor = UIColor.purpleColor()
+        self.refreshControl.tintColor = UIColor.whiteColor()
+        self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,4 +119,20 @@ class HomeTimeLineViewController: UIViewController, UITableViewDataSource, UITab
 //            destination.tweetShown = tweetToDisplay
 //    }
 //}
+    
+    func refresh(){
+        firstTweet = self.tweets![0]
+        
+        self.networkController.fetchTimeLine (firstTweet, selectedTweet: selectedTweet, {(errorDescription : String?, tweets2 : [Tweet]?) -> (Void) in
+            if errorDescription != nil {
+                //alert the user that something went wrong
+            } else {
+                self.tweets = tweets2! + self.tweets!
+                self.tableView.reloadData()
+            }
+        })
+        self.refreshControl.endRefreshing()
+        firstTweet = nil
+
+    }
 }

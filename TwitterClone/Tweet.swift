@@ -15,7 +15,7 @@ class Tweet {
     var profileImageURL : String
     var profileImage : UIImage
     var retweetCount : Int
-    var tweetID : Int
+    var tweetID : String
     var favoriteCount : Int
     var profileIDString : String
     var tweetDrillFlag : Int
@@ -26,7 +26,7 @@ class Tweet {
         self.profileImageURL = userProfile["profile_image_url"] as String
         self.profileImage = UIImage (named: "questionMark.png")
         self.retweetCount = tweetInfo["retweet_count"] as Int
-        self.tweetID = tweetInfo["id"] as Int
+        self.tweetID = tweetInfo["id_str"] as String
         self.favoriteCount = tweetInfo["favorite_count"] as Int
         self.profileIDString = userProfile["id_str"] as String
         self.tweetDrillFlag = 0
