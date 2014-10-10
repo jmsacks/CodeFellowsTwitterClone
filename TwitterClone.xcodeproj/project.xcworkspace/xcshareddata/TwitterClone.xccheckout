@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>96313BF2-0703-46F2-A652-E1B3E68D7B0D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TwitterClone</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D315C12DB03D12006668E1D308B7A709FBB06F04</key>
+		<string>https://github.com/codefellows/sea-b23-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TwitterClone/TwitterClone.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D315C12DB03D12006668E1D308B7A709FBB06F04</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/codefellows/sea-b23-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D315C12DB03D12006668E1D308B7A709FBB06F04</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D315C12DB03D12006668E1D308B7A709FBB06F04</string>
+			<key>IDESourceControlWCCName</key>
+			<string>sea-b23-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
