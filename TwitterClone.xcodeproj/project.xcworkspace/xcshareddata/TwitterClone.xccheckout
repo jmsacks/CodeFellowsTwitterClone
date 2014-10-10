@@ -10,22 +10,26 @@
 	<string>TwitterClone</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>2139B127DBA56922E43A6DDEC99788229CF7FAA0</key>
+		<string>github.com:jmsacks/CodeFellowsTwitterClone</string>
 		<key>D315C12DB03D12006668E1D308B7A709FBB06F04</key>
 		<string>https://github.com/codefellows/sea-b23-iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TwitterClone/TwitterClone.xcodeproj</string>
+	<string>TwitterClone.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>2139B127DBA56922E43A6DDEC99788229CF7FAA0</key>
+		<string>../..</string>
 		<key>D315C12DB03D12006668E1D308B7A709FBB06F04</key>
-		<string>../../..</string>
+		<string>../../../sea-b23-iOS</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/codefellows/sea-b23-iOS.git</string>
+	<string>github.com:jmsacks/CodeFellowsTwitterClone</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>D315C12DB03D12006668E1D308B7A709FBB06F04</string>
+	<string>2139B127DBA56922E43A6DDEC99788229CF7FAA0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>D315C12DB03D12006668E1D308B7A709FBB06F04</string>
 			<key>IDESourceControlWCCName</key>
 			<string>sea-b23-iOS</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2139B127DBA56922E43A6DDEC99788229CF7FAA0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TwitterClone</string>
 		</dict>
 	</array>
 </dict>
