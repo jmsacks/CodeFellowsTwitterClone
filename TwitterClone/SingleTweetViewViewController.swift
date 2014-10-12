@@ -21,14 +21,9 @@ class SingleTweetViewViewController: UIViewController {
         super.viewDidLoad()
         self.tweet.text = tweetShown?.text
         self.profileImage.image = tweetShown?.profileImage
-        println(tweetShown?.profileImageURL)
         self.retweetedTimes.text = "This tweet has been retweeted \(tweetShown!.retweetCount) times."
         self.favoritedTimes.text = "This tweet has been favorited \(tweetShown!.favoriteCount) times."
-        
-        
-
-        // Do any additional setup after loading the view.
-    }
+}
     
     @IBAction func showSingleUser(sender: AnyObject) {
         let singleUserTweetsView=self.storyboard?.instantiateViewControllerWithIdentifier("tweetListViewController") as HomeTimeLineViewController

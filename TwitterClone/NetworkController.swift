@@ -12,17 +12,6 @@ import Social
 
 class NetworkController {
     
-//        class var sharedInstance: NetworkController {
-//        struct Static {
-//            static var instance: NetworkController?
-//            static var token: dispatch_once_t = 0
-//            }
-//            dispatch_once(&Static.token) {
-//                Static.instance = NetworkController()
-//            }
-//            return Static.instance!
-//        }
-    
     var twitterAccount : ACAccount?
     let imageQueue = NSOperationQueue()
     var url = NSURL(string: "")
@@ -32,7 +21,7 @@ class NetworkController {
     }
 
     
-    func fetchTimeLine( firstTweet : Tweet?, selectedTweet : Tweet?, completionHandler : (errorDescription : String?, tweets : [Tweet]?) -> (Void)) {
+    func fetchTimeLine( refTweet : Tweet?, selectedTweet : Tweet?, completionHandler : (errorDescription : String?, tweets : [Tweet]?) -> (Void)) {
         
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
@@ -43,13 +32,17 @@ class NetworkController {
                 let accounts = accountStore.accountsWithAccountType(accountType)
                 self.twitterAccount = accounts.first as ACAccount?
                 //setup our twitter request
-                var parameters : Dictionary<String, String>?
-                parameters = nil
+                var parameters = Dictionary<String, String>()
+                parameters["count"] = "50"
                 
-                if firstTweet != nil {
-                    //let tweetIDString = String(firstTweet!.tweetID)
-                    parameters = ["since_id" : firstTweet!.tweetID]
+                if refTweet?.tweetUsedAsFirstTweet == 1 {
+                    parameters["since_id"] = refTweet!.tweetID
                     println("Hit firstTweet if statment")
+                }
+                
+                else if refTweet?.twwetUsedAsLastTweet == 1{
+                    parameters["max_id"] = refTweet!.tweetID
+                    println("Hit MaxTweet if statment")
                 }
                 
                 
@@ -61,7 +54,7 @@ class NetworkController {
                 else {
                     let userID = selectedTweet!.profileIDString
                     self.url = NSURL(string: "https://api.twitter.com/1.1/statuses/user_timeline.json")
-                    parameters = ["user_id" : userID]
+                    parameters["user_id"] = userID
                     println("Hit the else")
                 }
                 println("The url is:")
@@ -71,6 +64,8 @@ class NetworkController {
                 
                 twitterRequest.performRequestWithHandler({ (data, httpResponse, error) -> Void in
                     
+                    if ((httpResponse) != nil) {
+                        
                     switch httpResponse.statusCode {
                     case 200...299:
                         let tweets = Tweet.parseJSONDataIntoTweets(data)
@@ -89,6 +84,10 @@ class NetworkController {
                     default:
                         println("something bad happened")
                     }
+                    }
+                    else {
+                        //TO-DO: Create an error screen explaning there is an internet connectivity issue
+                    }
                     
                 })
             }
@@ -96,17 +95,23 @@ class NetworkController {
         
     }
     
+    
     func getImageFromURL (tweet: Tweet, completionHandler : (image :UIImage) -> Void) {
-        
+        if tweet.previouslyDownloadedImage == 0 {
         self.imageQueue.addOperationWithBlock { () -> Void in
-            let nsurl = NSURL (string : tweet.profileImageURL)
+            var imageString = tweet.profileImageURL
+            imageString = imageString.stringByReplacingOccurrencesOfString("_normal", withString: "_bigger", options: nil, range: nil)
+            let nsurl = NSURL (string : imageString)
+           println(imageString)
             let data = NSData (contentsOfURL: nsurl)
             let profimage = UIImage (data: data)
             tweet.profileImage = profimage
+            tweet.previouslyDownloadedImage = 1
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                 completionHandler (image : profimage)
             })
             //return image
+        }
         }
 
     }
