@@ -39,7 +39,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="top" id="Jad-Ik-4dw">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkq-IZ-UaR">
@@ -126,15 +126,15 @@
                                             <exclude reference="mqT-4b-z6A"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="MOd-sg-STN"/>
-                                            <exclude reference="oEc-8S-jTf"/>
                                             <exclude reference="411-ic-zdB"/>
                                             <exclude reference="hbx-ZA-F7Z"/>
-                                            <exclude reference="P4Q-Jw-Hod"/>
-                                            <exclude reference="cQU-YA-2WD"/>
                                             <exclude reference="05y-iP-FXI"/>
                                             <exclude reference="DsF-o8-Ph6"/>
                                             <exclude reference="N7p-Qc-oI2"/>
+                                            <exclude reference="P4Q-Jw-Hod"/>
+                                            <exclude reference="cQU-YA-2WD"/>
+                                            <exclude reference="MOd-sg-STN"/>
+                                            <exclude reference="oEc-8S-jTf"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
@@ -145,15 +145,15 @@
                                             <include reference="mqT-4b-z6A"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="MOd-sg-STN"/>
-                                            <include reference="oEc-8S-jTf"/>
                                             <include reference="411-ic-zdB"/>
                                             <include reference="hbx-ZA-F7Z"/>
-                                            <include reference="P4Q-Jw-Hod"/>
-                                            <include reference="cQU-YA-2WD"/>
                                             <include reference="05y-iP-FXI"/>
                                             <include reference="DsF-o8-Ph6"/>
                                             <exclude reference="N7p-Qc-oI2"/>
+                                            <include reference="P4Q-Jw-Hod"/>
+                                            <include reference="cQU-YA-2WD"/>
+                                            <include reference="MOd-sg-STN"/>
+                                            <include reference="oEc-8S-jTf"/>
                                         </mask>
                                     </variation>
                                 </view>
